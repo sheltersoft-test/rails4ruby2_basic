@@ -1,0 +1,43 @@
+.DBMEmail
+  .formField
+    .row
+      .col-xs-12
+        = form_for(object, url: order_dbm_email_emails_path, remote: true, :html => {:class => "", :method => "post", :id => "order_dbm_email_form"}) do |f|
+          = f.hidden_field :brand_name, :value => @current_brand.name
+          %table.tableForm{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tbody
+              %tr
+                %td#stepBtnModalHeight.leftCol{:width => "74%"}
+                  .formBox
+                    .row
+                      .col-xs-12
+                        .form-group
+                          #input_dbm_recipient
+                            %p
+                              %label=t("executive.recipient")
+                              = text_field_tag "recipient_email[0]", @current_brand.email, :class => "form-control", :id => "input_recipient_email"
+                      .col-xs-12
+                        .form-group
+                          %label
+                            %a.addLink{:href => "javascript:void(0);", :id => "add_recipient_for_dbm_email"}
+                              %i.addIcon
+                              =t("executive.add_recipient")
+                      .col-xs-12
+                        .form-group
+                          %label=t("executive.subject")
+                          = text_field_tag :subject, t("executive.order_dbm_email.subject", brand: @current_brand.name), :class => "form-control", :id => "subject"
+                      .col-xs-12
+                        .form-group
+                          %label=t("executive.message")
+                          - message = t("executive.order_dbm_email.text_area_message", brand: @current_brand.name, current_user_email: current_user.email, current_user_name: current_user.name, request_email: 'userEmail')
+                          = hidden_field_tag 'old_message', message
+                          = text_area_tag :message, message, :rows => 16, :class => "form-control ckeditorCustom"
+                %td.stepBtnGroup{:width => "26%"}
+                  %button.h25.stepBtn.backBtn{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                    %span
+                      =t("form_action_button.return_button")
+                    = image_tag "back_btn.png", :class => "mt15"                      
+                  %button.h75.stepBtn.nextBtn{:name => "next", :type => "submit", :id => "order_send_email_submit"}
+                    %span
+                      =t("form_action_button.send_message")
+                    = image_tag "email_btn.png", :class => "mt15"

@@ -1,0 +1,39 @@
+.page-wrap#wrapper
+  .container.login
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+        .formBox
+          .page-title
+            %h1= t('recovery.recover_password')
+          - if alert.present?
+            .alert.alert-dismissible.alert-danger#flash_msg
+              %button.close{"data-dismiss" => "alert", :type => "button"} ×
+              = alert
+
+          = form_for(resource, as: resource_name, url: password_path(resource_name), :html => {:class => "form-horizontal", :method => "put"}) do |f|
+            = f.hidden_field :reset_password_token
+            .form-group
+              %label.col-lg-2.control-label
+              .col-lg-10
+                - if alert.present?
+                  .alert.alert-dismissible.alert-danger
+                    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+                    %a.alert-link{:href => "#"}
+                      = alert
+
+            .form-group{:class => (resource.errors["password"].any? ? "has-error" : '')}
+              %label{:for => "inputPassword"}= t('change_password.new_password')
+              = f.password_field :password, autofocus: true, autocomplete: "off", placeholder: t('change_password.new_password'), :class => "form-control", :autofocus => true
+              - if resource.errors["password"].any?
+                .errorMsg
+                  = resource.errors["password"].first
+
+            .form-group{:class => (resource.errors["password_confirmation"].any? ? "has-error" : '')}
+              %label{:for => "inputPassword"}= t('change_password.confirm_password')
+              = f.password_field :password_confirmation, autocomplete: "off", placeholder: t('change_password.confirm_password'), :class => "form-control"
+              - if resource.errors["password_confirmation"].any?
+                .errorMsg
+                  = resource.errors["password_confirmation"][0]
+            .form-group.pt15
+              = f.submit t('change_password.change_my_password'), :class => "btn btn-primary btn-lg"              
+              = link_to t('general.have_an_account'), sign_in_path, :class => "right"

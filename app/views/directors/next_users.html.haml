@@ -1,0 +1,8 @@
+- if @directors.present?
+  - @directors.each do |director|
+    = render :partial => 'director', :locals => {director: director}
+  - if @directors.count > Settings.system.per_page
+    - count = params[:page].to_i + 1
+    = link_to next_users_directors_path(count), :remote => true, :class => "loadMore jscroll-next" do
+      %i.downArrow
+      = t("general.next")

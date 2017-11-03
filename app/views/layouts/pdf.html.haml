@@ -1,0 +1,14 @@
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    = wicked_pdf_stylesheet_link_tag 'pdf'
+  %body
+    %nav.navbar.navbar-default
+      .container
+        .navbar-header
+          .navbar-logo
+            = image_tag "#{@domain_url}remax_logo.png"
+    #mainWrapper
+      #wrapper.page-wrap
+        = yield
+    /= wicked_pdf_javascript_include_tag 'pdf'

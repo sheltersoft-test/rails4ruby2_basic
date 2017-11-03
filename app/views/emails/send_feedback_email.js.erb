@@ -1,0 +1,10 @@
+<% if (@feedback and @feedback.errors.any?) or @error.present? %>
+  <% error_msg = @error.present? ? t('general.something_went_wrong') : @feedback.errors.full_messages.first %>
+  setFlashMessage("feedback_notice", "feedback_notice_flash_msg", "<%= error_msg %>");
+<% else %>
+  $("#feedback_subject_bug").prop('checked', true);
+  $("#feedback_message").val('');
+  $("#feedbackModal").modal('hide');
+  $("#feedbackSuccessModal").modal();
+<% end %>
+<%= render :partial => "shared/ajax_js" %>

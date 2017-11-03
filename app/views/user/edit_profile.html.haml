@@ -1,0 +1,44 @@
+= form_for(current_user, url: update_profile_path, :multipart => true, :html => {:class => "form-horizontal"}) do |f|
+  %fieldset
+    %legend
+      = t('general.edit_profile')
+    .form-group
+      %label.col-lg-2.control-label
+      .col-lg-10
+        - if alert.present?
+          .alert.alert-dismissible.alert-danger
+            %button.close{"data-dismiss" => "alert", :type => "button"} ×
+            %a.alert-link{:href => "#"}
+              = alert
+    .form-group{:class => (current_user.errors["first_name"].any? ? "has-error" : '')}
+      %label.col-lg-2.control-label{:for => "inputFirstName"} First Name
+      .col-lg-10
+        = f.text_field :first_name, placeholder: t('signup.fname'), :class => "form-control"
+        - if current_user.errors["first_name"].any?
+          .errorMsg
+            = current_user.errors["first_name"][0]        
+    .form-group{:class => (current_user.errors["last_name"].any? ? "has-error" : '')}
+      %label.col-lg-2.control-label{:for => "inputLastName"} Last Name
+      .col-lg-10
+        = f.text_field :last_name, placeholder: t('signup.lname'), :class => "form-control"
+        - if current_user.errors["last_name"].any?
+          .errorMsg
+            = current_user.errors["last_name"][0]
+
+    .form-group
+      %label.col-lg-2.control-label
+      .col-lg-10
+        = f.file_field :avatar
+        - if current_user.errors["avatar"].any?
+          .errorMsg
+            = current_user.errors["avatar"][0]
+
+    - if f.object.avatar.present?
+      .form-group
+        %label.col-lg-2.control-label
+        .col-lg-10
+          = image_tag f.object.avatar(:thumb)
+
+    .form-group
+      .col-lg-10.col-lg-offset-2        
+        = f.submit t('general.update') , :class => "btn btn-success"

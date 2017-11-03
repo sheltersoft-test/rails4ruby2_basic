@@ -1,0 +1,8 @@
+.filterTop
+  .row
+    = form_for '', :url => user_filter_directors_path, :method => 'post', :html => {:id => "filterFormId"}, :remote => true do
+      = hidden_field_tag 'role', role
+      .col-xs-12.col-sm-6.col-md-4.col-lg-12
+        = text_field_tag :search,session[:director_search],:class => "form-control",placeholder: t("general.search_name_or_city")
+    %div{id: 'loader-image', class: 'loader'}
+      = image_tag 'loader-small.gif'            

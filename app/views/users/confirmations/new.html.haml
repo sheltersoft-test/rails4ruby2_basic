@@ -1,0 +1,20 @@
+.mainContainer
+  .loginPage
+    .container
+      %h1.pageTitle= t('general.resent_confirmation')
+      .row
+        .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+          .formBox
+            = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+              - if alert.present?
+                .errorMsg= alert
+              .form-group
+                = f.email_field :email, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), :class => "form-control"
+                - if resource.errors[:last_name].any?
+                  .errorMsg
+                    = resource.errors[:email].first
+              .form-button
+                = f.submit t('general.resent_confirmation'), :class => "btn btn-success", :name => "resent"
+              .formLinks.clearfix
+                = link_to t('general.fogot_password'), forgot_password_path, :class => "linkLeft"
+                = link_to t('general.create_an_account'), sign_up_path, :class => "linkRight", 'data-no-turbolink' => true

@@ -1,0 +1,31 @@
+.container
+  .page-title
+    %h1
+      .title-logo
+        = image_tag  @current_brand.logo.url, :width => "115"
+      =t('executive_desktop.business_management')
+  .row.row-10
+    .col-xs-12.col-sm-4.col-md-3
+      %a.toolBox{:href => "#"}
+        .toolImage            
+          = image_tag "dbm_performance.png"
+        .toolTitle
+          = t("desktop.performance_reports").html_safe
+    .col-xs-12.col-sm-4.col-md-3
+      %a.toolBox{:href => "#" }
+        .toolImage
+          = image_tag "lost_deals.png"
+        .toolTitle
+          = t("desktop.send_bill").html_safe
+    .col-xs-12.col-sm-4.col-md-3
+      %a.toolBox{:href => "#"}
+        .toolImage
+          = image_tag "lost_deals.png"
+        .toolTitle
+          = t("desktop.bill_archive").html_safe
+    .col-xs-12.col-sm-4.col-md-3
+      %a.toolBox{:href => "#"}
+        .toolImage
+          = image_tag "background_variables.png"
+        .toolTitle
+          = t("desktop.background_variables").html_safe

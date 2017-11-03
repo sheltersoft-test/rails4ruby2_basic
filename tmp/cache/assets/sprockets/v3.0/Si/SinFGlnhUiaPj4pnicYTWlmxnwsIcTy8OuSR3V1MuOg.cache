@@ -1,0 +1,67 @@
+I"¢	(function() {
+  $(document).ready(function() {
+    var place, resourceHolderType, user_roles;
+    if ($('#resource_resource_holder_type').length > 0) {
+      resourceHolderType = $('#resource_resource_holder_type');
+      resourceHolderType.change(function(e) {
+        var selectedValue;
+        selectedValue = resourceHolderType.val();
+        if (selectedValue) {
+          $.ajax({
+            url: '/resources/get_resource_holders',
+            method: 'GET',
+            data: {
+              'resource_holder_type': selectedValue
+            },
+            success: function(result) {
+              var options;
+              options = '<option value=\'\'></option>';
+              result['resource_holders'].forEach(function(resource_holder) {
+                var option;
+                option = '<option value=' + resource_holder['id'] + '>' + resource_holder['name'] + '</option>';
+                options += option;
+              });
+              $('#resource_resource_holder_id').html(options);
+            }
+          });
+        }
+      });
+    }
+    if ($('.has_many_container.place').length > 0) {
+      place = $('.has_many_container.place');
+      if ($(place.find('fieldset')).length > 0) {
+        place.find('.has_many_add').hide();
+        if (place.find('*[id^="_place_attributes__destroy"]').length === 0) {
+          place.find('.has_many_remove').show();
+        } else {
+          place.find('.has_many_remove').hide();
+        }
+      }
+      $(place.find('.has_many_add')).click(function() {
+        place.find('.has_many_add').hide();
+      });
+      $('.has_many_container.place').on('click', '.has_many_remove', function() {
+        place.find('.has_many_add').show();
+      });
+    }
+    if ($('.has_many_container.user_role').length > 0) {
+      user_roles = $('.has_many_container.user_role');
+      if ($(user_roles.find('fieldset')).length > 0) {
+        user_roles.find('.has_many_add').hide();
+        if (user_roles.find('*[id^="_user_role_attributes__destroy"]').length === 0) {
+          user_roles.find('.has_many_remove').show();
+        } else {
+          user_roles.find('.has_many_remove').hide();
+        }
+      }
+      $(user_roles.find('.has_many_add')).click(function() {
+        user_roles.find('.has_many_add').hide();
+      });
+      return $('.has_many_container.user_role').on('click', '.has_many_remove', function() {
+        user_roles.find('.has_many_add').show();
+      });
+    }
+  });
+
+}).call(this);
+:ET

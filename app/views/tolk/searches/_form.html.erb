@@ -1,0 +1,19 @@
+<div class="form-group pt15">
+  <div class="row">
+    <%= form_tag tolk.search_path, :method => :get do %>
+      <%= hidden_field_tag :tolk_locale, locale.name %>
+      <div class="col-xs-12 col-sm-3">
+        <%= scope_selector_for(@locale)%>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= text_field_tag :q, params[:q], :class => "form-control", :placeholder => t("translation_tool.t_phrase") %>
+        </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= text_field_tag :k, params[:k], :class => "form-control", :placeholder => t("translation_tool.t_within_key") %>
+        </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= submit_tag t("translation_tool.t_search"), :name => nil, :class => "form-control bold btn btn-primary btn-lg btn-blue" %>
+      </div>
+    <% end %>
+</div>
+</div>

@@ -1,0 +1,11 @@
+.formBox
+  .formHeader.clearfix
+    %h1
+      = t("general.confirm_deletion", user: @user.name)
+
+  .form-group.formTitle
+    = t('general.delete_content')
+  .form-group
+    = link_to t('general.general_yes'), soft_delete_settings_path('delete','User', @user.id), method: :post, :class => "btn btn-primary btn-md"
+    %button.btn.btn-primary.btn-md{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+      =t('general.general_no')

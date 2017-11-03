@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-xs-12#registration-form
+      %table.tableForm{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+        %tbody
+          %tr
+            %td#stepBtnHeight.leftCol{:width => "80%"}
+              .formBox.view-details
+                .formHeader.clearfix
+                  %h1
+                    = t("executive.director_card", :name => @director.name)
+                = render :partial => "open_card", :locals => {:object => @director}
+            %td.stepBtnGroup{:width => "20%"}
+              %a.h15.stepBtn.backBtn{:href => directors_path}
+                %span
+                  =t("form_action_button.return_button")
+                = image_tag "back_btn.png", :class => "mt15"
+              %a.h15.stepBtn.nextBtn{:href => edit_director_path(@director, :step => 1, :open_card => true)}
+                %span
+                  =t("form_action_button.edit_basic_information")
+                = image_tag "save_and_next_btn.png", :class => "mt15"
+              %a.h15.stepBtn.nextBtn{:href => edit_director_path(@director, :step => 2, :open_card => true)}
+                %span
+                  =t("form_action_button.edit_job_role_and_skills")
+                = image_tag "save_and_next_btn.png", :class => "mt15"
+              %a.h15.stepBtn.nextBtn{:href => more_options_settings_path("User",@director)}
+                %span
+                  =t("form_action_button.office.card.more_options")
+                = image_tag "save_and_next_btn.png", :class => "mt5"              
+                

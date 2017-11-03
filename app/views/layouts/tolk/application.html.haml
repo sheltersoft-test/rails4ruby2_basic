@@ -1,0 +1,35 @@
+!!!
+%html{:lang => Tolk::Locale.primary_locale_name}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= t("site_title")
+    = stylesheet_link_tag "tolk/application"
+    = stylesheet_link_tag 'application', media: 'all'
+    = yield :head
+  %body
+    = render "layouts/tolk/header"
+    %div{:class => ".pre-icon"}
+    #mainWrapper.site-content
+      #wrapper.page-wrap
+        .container
+          .formBox
+            %nav.navbar.navbar-default
+              .container-fluid
+                .navbar-header1
+                  %ul.nav.navbar-nav.navbar-right
+                    .form-group
+                      %li= button_to t('translation_tool.t_apply_changes'), dump_all_locales_path, :method => :post, :class => "bold btn btn-primary btn-lg btn-blue"
+            = yield
+    %footer.footer
+      .container
+        %p
+          = t('footer.powerby')
+          %span
+            = t('footer.straumann')
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery-ui-1.10.1.custom.min'
+    = javascript_include_tag "i18n"
+    = javascript_include_tag 'bootstrapValidator.min'
+    = javascript_include_tag "tolk/application"
+    - if current_user.present?
+      = javascript_include_tag 'application'

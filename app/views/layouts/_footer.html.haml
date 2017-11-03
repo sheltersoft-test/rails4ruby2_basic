@@ -1,0 +1,10 @@
+%footer.footer
+  .container
+    = hidden_field_tag "pc_browser", pc?
+    - if @back_to_top
+      .back-top
+        %a{:href => "#top"}
+          = 'TOP'
+    %p
+      =t('footer.powerby')
+      %span= t('footer.dbm')

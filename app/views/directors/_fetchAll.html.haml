@@ -1,0 +1,19 @@
+.scroll.row.row-10
+  .col-xs-12.col-sm-6.col-md-4.col-10
+    %a.rxBox.addNew{:href => new_director_path}
+      .rxImage
+        = image_tag "add_dark.png"
+      .rxBottom
+        .rxAddNewBtn
+          %i.fa.fa-plus-circle
+          = t("director.register_director")
+  - if @directors.present?  
+    - @directors.each do |director|
+      = render :partial => 'director', :locals => {director: director}
+    - if @directors.count > Settings.system.per_page
+      = link_to next_users_directors_path(2), :remote => true, :class => "loadMore jscroll-next" do
+        %i.downArrow
+        = t("general.next")
+  - else
+    .col-xs-12.col-sm-6.col-md-4.col-10.alert.alert-warning
+      %span= t('general.no_record_found')

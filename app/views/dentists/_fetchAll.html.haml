@@ -1,0 +1,19 @@
+.scroll.row.row-10
+  .col-xs-12.col-sm-6.col-md-4.col-10
+    %a.rxBox.addNew{:href => "#"}
+      .rxImage
+        = image_tag "add_dark.png"
+      .rxBottom
+        .rxAddNewBtn
+          %i.fa.fa-plus-circle
+          = t("executive.register")
+  - if @dentists.present?  
+    - @dentists.each do |dentist|
+      = render :partial => 'dentist', :locals => {dentist: dentist}
+    - if @dentists.count > Settings.system.per_page
+      = link_to next_users_dentists_path(2), :remote => true, :class => "loadMore jscroll-next" do
+        %i.downArrow
+        = t("general.next")
+  - else
+    .col-xs-12.col-sm-6.col-md-4.col-10.alert.alert-warning
+      %span= t('general.no_record_found')

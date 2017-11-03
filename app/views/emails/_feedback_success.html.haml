@@ -1,0 +1,25 @@
+.formField
+  .row
+    .col-xs-12
+      %table.tableForm{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+        %tbody
+          %tr
+            %td#stepBtnModalHeight.leftCol{:width => "80%"}
+              .formBox.minH300
+                .row.center
+                  .col-xs-12
+                    .form-group
+                      %p
+                        %label.bold=t("feedback.thank_you_for_feedback")
+                  .col-xs-12
+                    .form-group
+                      %p
+                        %label.bold=t("feedback.depending_on_message_contact")
+                  .col-xs-12
+                    .form-group
+                      %p
+                        %label.bold=t("feedback.opinion_is_important")
+            %td.stepBtnGroup{:width => "20%"}
+              %button.stepBtn.backBtn{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                %span
+                  =t("form_action_button.close")

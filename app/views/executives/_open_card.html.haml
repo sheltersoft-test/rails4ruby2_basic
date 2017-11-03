@@ -1,0 +1,127 @@
+.row.row10
+  .col-xs-12
+    .form-group.formTitle                    
+      = t("form.executive.basic_information")
+  .col-xs-12.col-md-6
+    .card-row
+      %label.label-view
+        %span
+          = t('executive.name')
+      %label.label-value
+        = object.name
+    .card-row  
+      %label.label-view
+        %span
+          = t('executive.address')
+      %label.label-value
+        = object.address
+    .card-row  
+      %label.label-view
+        %span
+          = t('executive.date_of_birth')
+      %label.label-value
+        = object.birthdate.to_datetime.to_s(:default_date) if object.birthdate.present?
+    .card-row  
+      %label.label-view
+        %span
+          = t('executive.contract_starting_date')
+      %label.label-value
+        = object.contract_start_date.to_datetime.to_s(:default_date) if object.contract_start_date.present?
+    .card-row  
+      %label.label-view
+        %span
+          = t('executive.dbm_id')
+      %label.label-value
+        = object.email
+    .card-row
+      %label.label-view
+        %span
+          = t('executive.contractual_relationship')
+      %label.label-value
+        = object.relationship_type.humanize        
+    .card-row  
+      %label.label-view
+        %span
+          = t('executive.contract')
+      %label.label-value
+        - written_contracts = object.resources.with_type('DOCUMENT::WRITTEN_CONTRACT')
+        - if written_contracts.any?
+          - written_contracts.each do |written_contract|
+            %div.pb5
+              = link_to written_contract.media_file_name, download_resource_path(written_contract.id) if written_contract.present? and written_contract.media.present?
+        - contract_attachments = object.resources.with_type('DOCUMENT::CONTRACT_ATTACHMENT')
+        - if contract_attachments.any?
+          - contract_attachments.each do |contract_attachment|
+            %div.pb5            
+              = link_to contract_attachment.media_file_name, download_resource_path(contract_attachment.id) if contract_attachment.present? and contract_attachment.media.present?
+  .col-xs-12.visible-xs.visible-sm.form-group
+  .col-xs-12.col-md-6
+    .card-row
+      %label.label-view
+        %span
+          = t('executive.phone_number')
+      %label.label-value
+        = object.phone_number
+    .card-row
+      %label.label-view
+        %span
+          = t('executive.email')
+      %label.label-value
+        = object.email
+    .card-row
+      %label.label-view
+        %span
+          = t('executive.job_role')
+      %label.label-value
+        = object.job_role
+    .card-row
+      %label.label-view
+        %span
+          = t('executive.language_skills')
+      %label.label-value
+        = object.language_skills.map {|language_skill| language_skill.localize(I18n.locale).try(:name)}.join(',')
+        = object.languages if object.languages.present?
+    .card-row
+      %label.label-view
+        %span
+          = t('executive.degrees')
+      %label.label-value
+        = object.other_business_degrees
+    .card-row  
+      %label.label-view
+        %span
+          = t('executive.certificate')
+      %label.label-value
+        - certificates = object.resources.with_type('DOCUMENT::LKV_CERTIFICATE')
+        - if certificates.any?
+          - certificates.each do |certificate|
+            %div.pb5
+              = link_to certificate.media_file_name, download_resource_path(certificate.id) if certificate.present? and certificate.media.present?        
+.row.row10
+  .col-xs-6
+    .form-group.formTitle
+      = t("executive.reward_based_and_payment_rules")
+    .col-xs-6
+      .form-group
+        = t('executive.performing_dentist_work')
+    .col-xs-6
+      .form-group
+        = @executive.perform_dentist_work == true ? t("executive.probation_yes") : t("executive.probation_no")
+  .col-xs-6
+    .form-group.formTitle
+      = t("executive.payment_information")
+    .col-xs-6
+      .form-group
+        = t('executive.performing_dentist_work')
+    .col-xs-6
+      .form-group
+        = @executive.perform_dentist_work == true ? t("executive.probation_yes") : t("executive.probation_no")
+    .col-md-6.col-lg-12
+      .form-group.row
+        .col-xs-12.pt10.right-text
+          - resource = object.resources['IMAGE::USER_PHOTO']
+          = image_tag src="#{resource.media.url(:medium)}" if resource.present?
+      - if object.introduction.present?
+        .row
+          %label.col-xs-12.intro-text
+            = object.introduction

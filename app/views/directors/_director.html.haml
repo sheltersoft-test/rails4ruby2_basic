@@ -1,0 +1,42 @@
+.col-xs-12.col-sm-6.col-md-4.col-10
+  .rxBox
+    .rxHeader
+      .rxTitle
+        = director.name
+      .rxSubName
+        = director.job_role      
+
+      .rxLogo
+        - resource = director.resources['IMAGE::USER_PHOTO']
+        = image_tag src="#{resource.media.url(:small)}" if resource.present?
+    .rxContent
+      .row.row5
+        .col-xs-12
+          .rxDesc
+            %span
+              = t('executive.email')
+            .rxValue
+              = director.email
+        .col-xs-12
+          .rxDesc
+            %span
+              = t('executive.phone_number')
+            .rxValue
+              = director.phone_number
+        .col-xs-12.col-sm-6
+          .rxDesc
+            %span
+              = t('executive.city')
+            .rxValue
+              = director.city
+        .col-xs-12.col-sm-6
+          .rxDesc
+            %span
+              = t('general.change')
+            .rxValue
+              %a.rxIconText{:href => "#" }
+                = t('general.password')
+    .rxBottom
+      %a.rxNextBtn{:href => director_path(director) }
+        = t("executive.open_card")
+        %i.fa.fa-angle-double-right

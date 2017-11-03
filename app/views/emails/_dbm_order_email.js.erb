@@ -1,0 +1,8 @@
+<% if @success %>
+  setFlashMessage("set_flash_message", "add_to_order_flash", "<%= t('executive.order_remax_email_sent') %>");
+<% else %>
+  setFlashMessage("set_flash_message", "add_to_order_flash", "<%= t('general.something_went_wrong') %>");
+<% end %>
+$('#DBMEmailModal').modal('hide');
+$('#order_send_email_submit').attr('disabled', false);
+$('.modal').modal('hide');

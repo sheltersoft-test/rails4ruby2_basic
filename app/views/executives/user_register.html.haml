@@ -1,0 +1,26 @@
+.container
+  .page-title
+    %h1
+      .title-logo
+        = image_tag  @current_brand.logo.url, :width => "115"
+      - if current_user.executive?
+        =t('executive_desktop.user_register')
+  .row.row-10
+    .col-xs-12.col-sm-4.col-md-4
+      %a.toolBox{:href => dentists_path}
+        .toolImage            
+          = image_tag "dbm_office_register.png"
+        .toolTitle
+          = t("executive_desktop.dentist_register").html_safe
+    .col-xs-12.col-sm-4.col-md-4
+      %a.toolBox{:href => directors_path }
+        .toolImage
+          = image_tag "dbm_director_register.png"
+        .toolTitle
+          = t("executive_desktop.director_register").html_safe
+    .col-xs-12.col-sm-4.col-md-4
+      %a.toolBox{:href => executives_path}
+        .toolImage
+          = image_tag "dbm_business_management.png"
+        .toolTitle
+          = t("executive_desktop.executive_register").html_safe

@@ -1,0 +1,4 @@
+- if @nav_header_menus
+  - @nav_header_menus.each do |menu|
+    = link_to menu[:href], :class => (menu[:arrowBack].present? ? 'fxBtn fxBack' : 'fxBtn') do
+      = menu[:label]

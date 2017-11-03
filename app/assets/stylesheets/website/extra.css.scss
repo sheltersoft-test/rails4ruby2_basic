@@ -1,0 +1,104 @@
+/*label.boxItem { 
+  display: inline-block;
+  border: 1px solid black;
+  margin-right: 5em;
+  margin-bottom: 5em;
+  position:relative;
+  background-color: #eee;
+  border-radius: 25px;
+  padding: 5px;
+}
+
+.boxItem:before,
+.boxItem:after
+{
+  content:'';
+  width:5em;
+  border-bottom:1px solid;
+  position:absolute;
+  top:50%;
+
+}*/
+/*:after {
+  left:100%;
+}
+:before {
+  right:100%;
+}*/
+/*.boxItem:first-of-type:before,
+.boxItem:last-of-type:after {
+  display:none;
+}*/
+.myBox {
+  white-space:nowrap;
+  }
+
+div.field_with_errors{
+  margin-bottom: 15px;
+}
+
+ul.preview_attachments,.wrap{
+ word-wrap: break-word; 
+}
+
+/*.withbgColor{
+  background: #585857 !important;
+  cursor: default !important;
+}
+.withColor{
+  color: #fff !important;
+}*/
+.wi18{width: 18px;}
+.br15{border-radius: 15px;}
+/*.withbgColor .rpBottom{border-top: 1px solid #fff !important;
+  a:hover {
+    color: #8fb91c !important;
+  }
+}*/
+/*.rpBottom .networkPartnersLink{color: #fff !important;}*/
+
+.round-btn{
+  content: "\f058";
+  color: #fff;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 22px;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+
+.formBox.bgColorG{
+  background: #8fb91c !important; padding: 25px 35px 15px; border: 1px solid #eaeaea; border-radius: 5 px;
+  color: #fff !important
+}
+/*.Wfont .lbl,.Wfont .formTitle,
+  .Wfont .formBox label,
+    .Wfont .selectBox select, 
+      .Wfont .form-control {
+  color: #fff !important;
+}*/
+
+/*.page-title.sub-title .addLink:hover{ color: #fff !important; text-decoration: underline;}*/
+
+.programTable .ptAvatar2{ width: 90px;}
+
+.input-group-addon{
+  border:none !important; 
+}
+.input-group-addon.dColor
+{
+    background-color:#eee !important ;
+}
+.input-group-addon.eColor
+{
+    background-color:#f9f9f9 !important ;
+}
+.input-group-addon.eColor.bSolid
+{
+    border:2px solid #f5f4f4 !important;
+}
+

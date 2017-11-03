@@ -1,0 +1,90 @@
+.row
+  .col-xs-12
+    .form-group.formTitle
+      =t('executive.job_role')
+  .col-xs-12#job_roles
+    .row
+      - checked = object.job_role.present? ? false : true
+      - job_roles.each do |job_role|
+        .col-xs-12.col-sm-3.col-md-4
+          .form-group
+            %label.radiobox
+              = f.radio_button :job_role, job_role, checked: object.job_role == job_role, :class => "job_role"
+              %span.lbl
+                =t("user.job_role.#{job_role}")
+      - if other_job_role.present?
+        .col-xs-12.col-sm-3.col-md-4
+          .form-group
+            %label.radiobox
+            = radio_button_tag "o_job_role", other_job_role, checked, :class => "other_job_role"
+            %span.lbl
+              = other_job_role.humanize
+      - if !other_job_role.present?
+        #input_add_job_role
+        .col-xs-12
+          %label
+            %a.addLink{:href => "javascript:void(0);", :id => "add_new_job_role"}
+              %i.addIcon
+              =t("executive.add_job_role")
+.row.form-group.mt10
+  .col-xs-12
+    %label.normal
+      = t('executive.business_degrees')
+  .col-xs-6
+    = f.text_area :other_business_degrees, :class => "form-control", :placeholder => t("executive.other_businees_degree_example"), :cols => 6 , :rows => 1, :id => "degree"
+  .col-xs-12
+    #input_add_user_certificate
+      .form-group.pt12
+        = link_to "javascript:void(0)", :class => "addLink certificate", :id => "certificate_#{user_role}" do
+          %i.addIcon
+          = t("executive.add_certificate")
+    .col-xs-6                     
+      .user_certificate_uploads{:id => "UserCertificate_#{user_role}", :class => 'hide'}
+        = render :partial => "shared/upload_files", :locals => {:object => object, :type => 'User', :resource_type => 'DOCUMENT', :resource_spec => 'LKV_CERTIFICATE', :title => t("executive.upload_certificate"), :index => "1"}                      
+  
+.row
+  .col-xs-12
+    .formTitle.pb5
+      = t('executive.upload_photos')
+    = render :partial => "shared/upload_photo", :locals => {:object => object, :type => 'User', :resource_type => 'IMAGE', :resource_spec => 'USER_PHOTO', :user => "#{user}"}
+.row
+  .col-xs-12
+    .hr.hr25
+  .col-xs-12
+    .formTitle.pb5
+      =t('executive.introduction_text')
+    .add_introduction_text.form-group
+      %a{href:'javascript:void(0)', class: 'addLink'}
+        %i.addIcon
+        = t('executive.add_introduction_text')
+    #introduction_text_area.hide
+      .form-group
+        = f.text_area :introduction, :class => "form-control", :cols => 6 , :rows => 1                
+.row
+  .col-xs-12
+    .form-group.formTitle
+      =t('executive.language_skills')
+  .col-xs-12#languages
+    .row
+      - language_skills.each do |language_skill|
+        .col-xs-12.col-sm-3.col-md-4
+          .form-group
+            %label.checkBox
+              = check_box_tag 'language_skills[]', language_skill.id, (object.language_skills.pluck(:id).include? language_skill.id)
+              %span.lbl
+                = language_skill.localize(I18n.locale).try(:name)
+      - if other_languages.present?
+        - other_languages.each do |language|
+          .col-xs-12.col-sm-3.col-md-4
+            .form-group
+              %label.checkBox
+                = check_box_tag 'language_'+language, true, true
+                %span.lbl
+                  = language
+    .row
+      #input_add_language
+      .col-xs-12
+        %label
+          %a.addLink{:href => "javascript:void(0);", :id => "add_new_language"}
+            %i.addIcon
+            =t("executive.add_language")

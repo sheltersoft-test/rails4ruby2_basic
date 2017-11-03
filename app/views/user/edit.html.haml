@@ -1,0 +1,26 @@
+.page-wrap#wrapper
+  .container.login
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+        .formBox
+          .page-title
+            %h1=t("general.change_password")
+          = form_for(@user, url: update_password_user_index_path, :html => {:id => "changePass-form", :class => "form-horizontal"}) do |f|
+            = f.hidden_field :reset_password_token
+            - if params[:id]
+              = hidden_field_tag 'id', params[:id]
+            .form-group
+              %label{:for => "inputPassword"}= t('change_password.new_password')              
+              = f.password_field :password, autocomplete: "off", placeholder: t('change_password.new_password'), :class => "form-control", :autofocus => true
+              - if @user.errors["password"].any?
+                .errorMsg
+                  = @user.errors["password"].first
+            .form-group
+              %label{:for => "inputPassword"}= t('change_password.confirm_password')
+              = f.password_field :password_confirmation, autocomplete: "off", placeholder: t('change_password.confirm_password'), :class => "form-control"
+              - if @user.errors["password_confirmation"].any?
+                .errorMsg
+                  = @user.errors["password_confirmation"][0]
+            .form-group.pt15
+              = f.submit t('change_password.change_my_password'), :class => "btn btn-primary btn-lg"              
+              = link_to "#{t('general.back')}", @back_path , :class => "right btn btn-primary btn-lg"

@@ -1,0 +1,35 @@
+.DBMEmail
+  .formField
+    .row
+      .col-xs-12
+        = form_for(object, url: send_login_info_email_emails_path(object.id), :html => {:class => "", :method => "post", :id => "send_login_info_email_form"}) do |f|
+          = f.hidden_field :brand_name, :value => @current_brand.name
+          = hidden_field_tag 'open_card', params[:open_card]
+          %table.tableForm{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tbody
+              %tr
+                %td#stepBtnModalHeight.leftCol{:width => "74%"}
+                  .formBox
+                    .row
+                      .col-xs-12
+                        .form-group
+                          %label=t("general.recipient")
+                          = text_field_tag "recipient_email", object.personal_email, :class => "form-control", :id => "recipient_email"
+                      .col-xs-12
+                        .form-group
+                          %label=t("general.subject")
+                          = text_field_tag :subject, t("general.send_login_info_email.subject", brand: @current_brand.name), :class => "form-control", :id => "subject"
+                      .col-xs-12
+                        .form-group
+                          %label=t("general.message")
+                          - message = t("general.send_login_info_email.text_area_message", brand: @current_brand.name,email: object.email, name: object.name, phone_number: @current_brand.phone_number).html_safe
+                          = text_area_tag :message, message, :rows => 16, :class => "form-control ckeditorCustom"
+                %td.stepBtnGroup{:width => "26%"}
+                  %button.h25.stepBtn.backBtn{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                    %span
+                      =t("form_action_button.return_button")
+                    = image_tag "back_btn.png", :class => "mt15"
+                  %button.h75.stepBtn.nextBtn{:name => "next", :type => "submit", :id => "order_email_submit"}
+                    %span
+                      =t("form_action_button.send_login_info_by_email")
+                    = image_tag "email_btn.png", :class => "mt15"                     

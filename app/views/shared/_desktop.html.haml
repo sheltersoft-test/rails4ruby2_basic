@@ -1,0 +1,101 @@
+.container
+  .page-title
+    %h1
+      .title-logo
+        = image_tag  @current_brand.logo.url, :width => "115"
+      - if current_user.executive?
+        =t('desktop.executive_desktop')
+      - elsif current_user.director?
+        =t('desktop.director_desktop')
+      - elsif current_user.dentist?
+        = t('desktop.dentist_desktop')
+  - if current_user.executive? or current_user.director? or current_user.dentist?
+    .row.row-10
+    - if current_user.executive? or current_user.director?
+      .col-xs-12.col-sm-4.col-md-4
+        %a.toolBox{:href => "#"}
+          .toolImage            
+            = image_tag "dbm_office_register.png"
+          .toolTitle
+            = current_user.executive? ? t("desktop.clinic_register").html_safe : t("desktop.office_register").html_safe
+      - if current_user.executive?
+        - user_register_path = user_register_executives_path
+      - elsif current_user.director?
+        - user_register_path = user_register_directors_path
+      .col-xs-12.col-sm-4.col-md-4
+        %a.toolBox{:href => user_register_path }
+          .toolImage
+            = image_tag "user_register.png"
+          .toolTitle
+            = t("desktop.user_register").html_safe
+      - if current_user.executive?
+        .col-xs-12.col-sm-4.col-md-4
+          %a.toolBox{:href => business_management_executives_path}
+            .toolImage
+              = image_tag "dbm_business_management.png"
+            .toolTitle
+              = t("desktop.business_management").html_safe              
+      - elsif current_user.director?
+        .col-xs-12.col-sm-4.col-md-4
+          %a.toolBox{:href => "#"}
+            .toolImage
+              = image_tag "lost_deals.png"
+            .toolTitle
+              = t("desktop.send_bill").html_safe 
+    - elsif current_user.dentist?
+      .col-xs-12.col-sm-4.col-md-6
+        %a.toolBox{:href => "#"}
+          .toolImage            
+            = image_tag "lost_deals.png"
+          .toolTitle
+            = t("desktop.bill_archive").html_safe
+      .col-xs-12.col-sm-4.col-md-6
+        %a.toolBox{:href => "#" }
+          .toolImage
+            = image_tag "dbm_performance.png"
+          .toolTitle
+            = t("desktop.performance_reports").html_safe           
+    - if current_user.executive? or current_user.director? or current_user.dentist?
+      - col_class = (current_user.executive? or current_user.dentist?) ? "col-md-4" : "col-md-3"
+      - if current_user.director?
+        .col-xs-12.col-sm-4{:class => "#{col_class}"}
+          %a.toolBox{:href => "#"}
+            .toolImage
+              = image_tag "dbm_performance.png"
+            .toolTitle
+              = t("desktop.performance_reports").html_safe 
+      .col-xs-12.col-sm-4{:class => "#{col_class}"}
+        %a.toolBox{:href => personal_settings_path}
+          .toolImage
+            = image_tag "settings.png"
+          .toolTitle
+            = t("desktop.my_settings").html_safe            
+      .col-xs-12.col-sm-4{:class => "#{col_class}"}
+        #feedbackModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog.modal-lg{:role => "document"}
+            .modal-content
+              .modal-body
+                = render :partial => "emails/form_feedback"
+        #feedbackSuccessModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog.modal-lg{:role => "document"}
+            .modal-content
+              .modal-body
+                = render :partial => "emails/feedback_success"
+        %a.toolBox{:href => "#", "data-target" => "#feedbackModal", "data-toggle" => "modal"}
+          .toolImage
+            = image_tag "dbm_feedback.png"
+          .toolTitle
+            = t("desktop.send_feedback_to_developers").html_safe
+      - if current_user.executive?
+        .col-xs-12.col-sm-4{:class => "#{col_class}"}
+          %a.toolBox{:href => "/translation_tool/locales/fi" }
+            .toolImage
+              = image_tag "dbm_performance.png"
+            .toolTitle
+              = t("translation_tool.name").html_safe
+      .col-xs-12.col-sm-4{:class => "#{col_class}"}
+        %a.toolBox{:href => destroy_user_session_path, "data-method" => "delete"}
+          .toolImage
+            = image_tag "dbm_end_session.png"
+          .toolTitle
+            = t("desktop.end_session").html_safe

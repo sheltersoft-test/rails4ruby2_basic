@@ -1,0 +1,115 @@
+= form_for(current_user, url: personal_settings_path, :multipart => true, :html => {:class => ""}) do |f|
+  %table.tableForm{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+    %tbody
+      %tr
+        %td#stepBtnHeight.leftCol{:width => "80%"}
+          .formBox
+            .formHeader.clearfix
+              %h1
+                = t("user.my_settings.manage_setting")
+            .row
+              .col-xs-12.col-md-6.col-lg-8
+                .formTitle.form-group
+                  = t("user.my_settings.login_id_and_password")
+                .form-group
+                  = f.text_field :email, :class => "form-control", :placeholder => t("user.my_settings.login_id")
+                .row.row7
+                  .col-xs-12.col-lg-8.form-group
+                    = f.password_field :password, :class => "form-control", :placeholder => t("user.my_settings.password"), :disabled=>true
+                  .col-xs-12.col-sm-5.col-md-8.col-lg-4.form-group
+                    %button.btn.btn-primary.btn-lg.btn-block{"data-target" => "#changePasswordModal", "data-toggle" => "modal", :type => "button"}
+                      =t("general.change_password")
+              .col-xs-12.visible-sm.visible-xs
+                .hr.hr25
+              .col-xs-12.col-md-6.col-lg-4
+                .row.row7
+                  .col-xs-12
+                    .formTitle.form-group
+                      = t("user.my_settings.choose_language")
+                  - User.languages.keys.each do |language|
+                    .col-xs-12.col-sm-4.col-md-6
+                      .form-group
+                        .langaugeOpt
+                          = f.radio_button :language, language
+                          = image_tag "flags/#{language}.png", width: 160
+            .row.row7
+              .col-xs-12
+                .hr.hr25
+              .col-xs-12
+                .formTitle.form-group
+                  = t("user.my_settings.basic_information")
+                .formSubTitle.form-group
+                  = current_user.name+","
+                  = current_user.job_role
+                .row.row7
+                  .col-xs-12.col-sm-8
+                    .form-group
+                      = f.text_field :address, :class => "form-control", :placeholder => t("user.address")
+                    .form-group
+                      = f.text_field :post_number, :class => "virtualKeyboard form-control", :placeholder => t("user.post_number")
+                    .form-group
+                      = f.text_field :city, :class => "form-control", :placeholder => t("user.city")
+                    .form-group
+                      = f.text_field :phone_number, :class => "form-control", :placeholder => t("user.phone_number")
+                  .col-xs-12.col-sm-4
+                    - resource = f.object.resources['IMAGE::USER_PHOTO']
+                    - if resource.present? and resource.media.present?
+                      .groupContent.center
+                        .form-group
+                          = image_tag resource.media.url(:medium),:class => "maxH210"
+
+            .row
+              .col-xs-12
+                .hr.hr25
+              .col-xs-12.col-lg-6
+                .formTitle.form-group
+                .row.row7.pb10
+                  .col-xs-6.col-sm-7.col-md-5.col-lg-7
+                  .col-xs-6.col-sm-5.col-md-7.col-lg-5
+                .row.row7
+                  .col-xs-6.col-sm-7.col-md-5.col-lg-7
+                  .col-xs-6.col-sm-5.col-md-7.col-lg-5
+
+              .col-xs-12.hidden-lg
+                .hr.hr25
+              .col-xs-12.col-lg-6
+                .formTitle.form-group
+                  = t("user.my_settings.social_media_profile")
+                .row.row7.form-group
+                  .col-xs-12.col-sm-3.col-lg-4.pt10
+                    = image_tag "linkedin.png"
+                    %label
+                      = t('general.linkedin')
+                  .col-xs-12.col-sm-9.col-lg-8
+                    %a{:href => "javascript:void(0);"}
+                      = f.text_field :linkedin_url, :class => "form-control"
+                .row.row7.form-group
+                  .col-xs-12.col-sm-3.col-lg-4.pt10
+                    = image_tag "facebook.png"
+                    %label
+                      = t('general.facebook')
+                  .col-xs-12.col-sm-9.col-lg-8
+                    %a{:href => "javascript:void(0);"}
+                      = f.text_field :facebook_url, :class => "form-control"
+                .row.row7.form-group
+                  .col-xs-12.col-sm-3.col-lg-4.pt10
+                    = image_tag "twitter.png"
+                    %label
+                      = t('general.twitter')
+                  .col-xs-12.col-sm-9.col-lg-8
+                    %a{:href => "javascript:void(0);"}
+                      = f.text_field :twitter_url, :class => "form-control"
+            .row
+              .col-xs-12
+                .hr.hr25
+              .col-xs-12.col-lg-6
+              
+          %td.stepBtnGroup{:width => "20%"}
+            %a.stepBtn.backBtn{:href => root_path}
+              %span
+                =t("form_action_button.discard_changes_and_return_back")
+              = image_tag "back_btn.png", :class => "mt15"
+            %button.stepBtn.nextBtn#step3Save{:name => "save", :type => "submit"}
+              %span
+                =t("form_action_button.save_changes_and_return_back")
+              = image_tag "save_btn.png", :class => "mt15"

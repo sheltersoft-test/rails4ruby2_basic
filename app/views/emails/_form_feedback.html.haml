@@ -1,0 +1,52 @@
+.feedbackEmail
+  .formField
+    .row
+      .col-xs-12
+        = form_for('', url: send_feedback_email_emails_path, :html => {:class => "", :method => "post", :id => "send_feedback_email_form_1", :remote => true}) do |f|
+          %table.tableForm{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tbody
+              %tr
+                %td#stepBtnModalHeight.leftCol{:width => "74%"}
+                  .formBox
+                    .formHeader.clearfix
+                      %h1
+                        = t("feedback.send_feedback_to_developers")
+                    #feedback_notice
+                    #feedback
+                    .row
+                      .col-xs-12
+                        .form-group
+                          %p
+                            %label=t("feedback.tip_1")
+                      .col-xs-12
+                        .form-group
+                          %p
+                            %label=t("feedback.tip_2")
+                      .col-xs-12
+                        .form-group
+                          %p
+                            %label=t("feedback.tip_3")
+                      .col-xs-12
+                        .row
+                          .col-xs-12.col-sm-6.col-lg-6
+                            .form-group
+                              %label.radioBox
+                                = radio_button_tag :subject, 'BUG', true, :id => "feedback_subject_bug"
+                                %span.lbl.bold=t('feedback.found_bug')
+                          .col-xs-12.col-sm-6.col-lg-6
+                            .form-group
+                              %label.radioBox
+                                = radio_button_tag :subject, 'DEVELOPMENT_IDEA'
+                                %span.lbl.bold=t('feedback.have_development_idea')
+                      .col-xs-12
+                        .form-group
+                          = raw text_area_tag :message, "", :rows => 12, :class => "form-control", :id => "feedback_message", :placeholder => t("feedback.message_placeholder")
+                %td.stepBtnGroup{:width => "26%"}
+                  %button.h25.stepBtn.backBtn{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                    %span
+                      =t("form_action_button.close")
+                    = image_tag "back_btn.png", :class => "mt15"
+                  %button.h75.stepBtn.nextBtn{:name => "next", :type => "submit", :id => "send_feedback_email_submit", :class => "pre-icon-load"}
+                    %span
+                      =t("form_action_button.send_feedback")
+                    = image_tag "dbm_email_btn.png", :class => "mt15"

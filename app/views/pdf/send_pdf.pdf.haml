@@ -1,0 +1,120 @@
+.formBox.view-details
+  .formHeader.clearfix
+    %h1
+      - user_name = "#{@user.first_name}"+ " "+"#{@user.last_name}"
+      - user_role = @user.user_role.role
+      = t("user.user_card_name", :type => user_role.humanize.capitalize, name: user_name)
+  .row.row-10
+    .col-xs-12
+      .form-group.formTitle
+        = t("user.basic_information", :type => user_role.humanize.capitalize)
+    .col-xs-12
+      .row.row5
+        .col-xs-12.col-md-6
+          .card-row
+            %label.label-view
+              %span
+                = t('user.card_name', :type => user_role.humanize.capitalize)
+            %label.label-value
+              = "#{@user.first_name}" "#{@user.last_name}"
+          .card-row
+            %label.label-view
+              %span
+                = t('user.address')
+            %label.label-value
+              = @user.address
+          .card-row
+            %label.label-view
+              %span
+                = t('user.date_of_birth')
+            %label.label-value
+              = @user.birthdate.to_datetime.to_s(:default_date) if @user.birthdate.present?
+          .card-row
+            %label.label-view
+              %span
+                = t('executive.dbm_id')
+            %label.label-value
+              = @user.email
+          .card-row
+            %label.label-view
+              %span
+                = t('executive.contractual_relationship')
+            %label.label-value
+              = @user.relationship_type.humanize
+        .col-xs-12.visible-xs.visible-sm.form-group
+        .col-xs-12.col-md-6
+          .card-row
+            %label.label-view
+              %span
+                = t('user.phone_number')
+            %label.label-value
+              = @user.phone_number
+          .card-row
+            %label.label-view
+              %span
+                = t('user.personal_email')
+            %label.label-value
+              = @user.personal_email
+          .card-row
+            %label.label-view
+              %span
+                = t('user.city')
+            %label.label-value
+              = @user.city        
+          .card-row
+            %label.label-view
+              %span
+                = t('executive.job_role')
+            %label.label-value
+              = @user.job_role.humanize
+          .card-row
+            %label.label-view
+              %span
+                = t('user.other_degrees')
+            %label.label-value
+              = @user.other_business_degrees
+          .card-row
+            %label.label-view
+              %span
+                = t('user.language_skills')
+            %label.label-value
+              = @user.language_skills.map {|language_skill| language_skill.localize(I18n.locale).try(:name)}.join(', ')
+              = @user.languages if @user.languages.present?
+
+
+  .row.row10
+    .col-xs-12
+      .hr.hr25
+    .col-xs-6
+      .form-group.formTitle
+        = t("executive.reward_based_and_payment_rules")
+      .col-xs-6
+        .form-group
+          = t('executive.performing_dentist_work')
+      .col-xs-6
+        .form-group
+          = @user.perform_dentist_work == true ? t("executive.probation_yes") : t("executive.probation_no")
+    .col-xs-6
+      .form-group.formTitle
+        = t("executive.payment_information")
+      .col-xs-6
+        .form-group
+          = t('executive.performing_dentist_work')
+      .col-xs-6
+        .form-group
+          = @user.perform_dentist_work == true ? t("executive.probation_yes") : t("executive.probation_no")
+      .col-md-6.col-lg-12
+        .form-group.row
+          .col-xs-12.pt10
+            - if Rails.env.production? 
+              - resource = @user.resources['IMAGE::USER_PHOTO']
+              - if resource and resource.media.present? and File.exist?(resource.media.path)
+                - url = "http://#{@current_brand.slug}.#{Settings.system.domain}#{resource.media.url(:small)}"
+                - if validate_remote_url?(url)
+                  = image_tag url
+        .row
+          %label.col-xs-12
+            - if @user.introduction.present?
+              .form-group
+                .intro-text
+                  = @user.introduction

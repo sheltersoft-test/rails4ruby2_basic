@@ -1,0 +1,586 @@
+en:
+  active_admin:
+    access_denied:
+      message: You are not authorized to perform this action.
+    any: Any
+    batch_actions:
+      action_label: "%{title} Selected"
+      button_label: Batch Actions
+      default_confirmation: Are you sure you want to do this?
+      delete_confirmation: Are you sure you want to delete these %{plural_model}?
+      labels:
+        destroy: Delete
+      link: Create one
+      selection_toggle_explanation: (Toggle Selection)
+      succesfully_destroyed:
+        one: Successfully destroyed 1 %{model}
+        other: Successfully destroyed %{count} %{plural_model}
+    blank_slate:
+      content: There are no %{resource_name} yet.
+      link: Create one
+    cancel: Cancel
+    comments:
+      add: Add Comment
+      author: Author
+      author_missing: Anonymous
+      author_type: Author Type
+      body: Body
+      created_at: Created
+      delete: Delete Comment
+      delete_confirmation: Are you sure you want to delete these comment?
+      errors:
+        empty_text: Comment wasn't saved, text was empty.
+      no_comments_yet: No comments yet.
+      resource: Resource
+      resource_type: Resource Type
+      title: Comment
+      title_content: Comments (%{count})
+    create_another: Create another %{model}
+    dashboard: Dashboard
+    dashboard_welcome:
+      call_to_action: To add dashboard sections, checkout 'app/admin/dashboard.rb'
+      welcome: Welcome to Active Admin. This is the default dashboard page.
+    delete: Delete
+    delete_confirmation: Are you sure you want to delete this?
+    delete_model: Delete %{model}
+    details: "%{model} Details"
+    devise:
+      change_password:
+        submit: Change my password
+        title: Change your password
+      email:
+        title: Email
+      links:
+        forgot_your_password: Forgot your password?
+        resend_confirmation_instructions: Resend confirmation instructions
+        resend_unlock_instructions: Resend unlock instructions
+        sign_in: Sign in
+        sign_in_with_omniauth_provider: Sign in with %{provider}
+        sign_up: Sign up
+      login:
+        remember_me: Remember me
+        submit: Login
+        title: Login
+      password_confirmation:
+        remember_me: Muista minut
+        submit: Kirjaudu sisään
+        title: Sisäänkirjautuminen
+      password:
+        title: Password
+      resend_confirmation_instructions:
+        submit: Resend confirmation instructions
+        title: Resend confirmation instructions
+      reset_password:
+        submit: Reset My Password
+        title: Forgot your password?
+      sign_up:
+        submit: Sign up
+        title: Sign up
+      subdomain:
+        title: Subdomain
+      unlock:
+        submit: Resend unlock instructions
+        title: Resend unlock instructions
+      username:
+        title: Username
+    download: 'Download:'
+    dropdown_actions:
+      button_label: Actions
+    edit: Edit
+    edit_model: Edit %{model}
+    empty: Empty
+    filters:
+      buttons:
+        clear: Clear Filters
+        filter: Filter
+      predicates:
+        contains: Contains
+        ends_with: Ends with
+        equals: Equals
+        from: From
+        greater_than: Greater than
+        gteq_datetime: Greater or equal to
+        less_than: Less than
+        lteq_datetime: Lesser or equal to
+        starts_with: Starts with
+        to: To
+    has_many_delete: Delete
+    has_many_new: Add New %{model}
+    has_many_remove: Remove
+    index_list:
+      block: List
+      blog: Blog
+      grid: Grid
+      table: Table
+    logout: Logout
+    main_content: Please implement %{model}#main_content to display content.
+    new_model: New %{model}
+    next: Next
+    pagination:
+      empty: No %{model} found
+      entry:
+        one: entry
+        other: entries
+      multiple: Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{total}</b> in total
+      multiple_without_total: Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b>
+      one: Displaying <b>1</b> %{model}
+      one_page: Displaying <b>all %{n}</b> %{model}
+      per_page: 'Per page:'
+    powered_by: Powered by %{active_admin} %{version}
+    previous: Previous
+    search_status:
+      current_filters: 'Current filters:'
+      current_scope: 'Scope:'
+      headline: 'Search status:'
+      no_current_filters: None
+    sidebars:
+      filters: Filters
+      search_status: Search Status
+    status_tag:
+      'no': 'No'
+      'yes': 'Yes'
+    unsupported_browser:
+      headline: Please note that ActiveAdmin no longer supports Internet Explorer
+        versions 8 or less.
+      recommendation: We recommend that you <a href=http://browsehappy.com/>upgrade
+        your browser</a> to improve your experience.
+      turn_off_compatibility_view: If you are using IE 9 or later, make sure you <a
+        href=https://support.microsoft.com/en-us/help/17471>turn off Compatibility
+        View</a>.
+    view: View
+  devise:
+    confirmations:
+      confirmed: Your email address has been successfully confirmed.
+      send_instructions: You will receive an email with instructions for how to confirm
+        your email address in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive an email with instructions for how to confirm your email address
+        in a few minutes.
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid %{authentication_keys} or password.
+      last_attempt: You have one more attempt before your account is locked.
+      locked: Your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
+    mailer:
+      confirmation_instructions:
+        subject: Confirmation instructions
+      password_change:
+        subject: Password Changed
+      reset_password_instructions:
+        subject: Reset password instructions
+      unlock_instructions:
+        subject: Unlock instructions
+    omniauth_callbacks:
+      failure: Could not authenticate you from %{kind} because %{reason}.
+      success: Successfully authenticated from %{kind} account.
+    passwords:
+      no_token: You can't access this page without coming from a password reset email.
+        If you do come from a password reset email, please make sure you used the
+        full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset
+        your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive a password recovery link at your email address in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
+    registrations:
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see
+        you again soon.
+      signed_up: Welcome! You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not
+        sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not
+        sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent
+        to your email address. Please follow the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need
+        to verify your new email address. Please check your email and follow the confirm
+        link to confirm your new email address.
+      updated: Your account has been updated successfully.
+    sessions:
+      already_signed_out: Signed out successfully.
+      signed_in: Signed in successfully.
+      signed_out: Signed out successfully.
+    unlocks:
+      send_instructions: You will receive an email with instructions for how to unlock
+        your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email
+        with instructions for how to unlock it in a few minutes.
+      unlocked: Your account has been unlocked successfully. Please sign in to continue.
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} was successfully created."
+      destroy:
+        alert: "%{resource_name} could not be destroyed."
+        notice: "%{resource_name} was successfully destroyed."
+      update:
+        notice: "%{resource_name} was successfully updated."
+  footer:
+    powerby: Powered by
+    dbm: Fenux
+  general:
+    about: About
+    account_locked: Your account has been locked due to an excessive number of unsuccessful
+      sign in attempts.
+    actions: Actions
+    are_you_sure: Are you sure ?
+    are_you_sure_remove: Are you sure you want to permanently remove this event from
+      database?
+    ascending: Ascending
+    attachments: Attachments
+    back: Back
+    back_to_top: Back to top
+    cancel: Cancel
+    cancel_my_account: CANCEL MY ACCOUNT
+    cant_blank: Can't be blank
+    change: Change
+    change_my_password: Change my password
+    change_password: Change Password
+    confirm_deletion: Confirm deletion of %{user}
+    confirm_email: 'You can confirm your account email through the link below:'
+    confirm_my_account: Confirm my account
+    confirmation_password: Confirmation password
+    create_an_account: CREATE AN ACCOUNT
+    data_invalid_or_required: Data is invalid or required
+    delete_content: Delete content
+    delete_message: Are you sure?
+    descending: Descending
+    desktop_header: DBM
+    destroy: Destroy
+    edit: Edit
+    edit_profile: Edit Profile
+    email: E-mail address
+    error_invalid_current_password: Invalid or require current password
+    error_password: Password and password confirmation required
+    error_password_confirmation: Password and password confirmation doesn't match
+    errors:
+      name_and_email_can_not_blank: Name or email is invalid
+    fname: First name
+    forgot_password: FORGOT PASSWORD?
+    has_already_been_taken: Has already been taken
+    have_an_account: HAVE AN ACCOUNT?
+    home: Home
+    ignore_email: If you didn't request this, please ignore this email. Your password
+      won't change until you access the link above and create a new one.
+    information_saved: Information is saved successfully
+    invalid_current_password: Invalid current password
+    invitation_remove_success_flash: Invitations was removed successfully
+    invitation_sent_remove_success_flash: Invitations was sent/removed successfully
+    invitation_sent_success_flash: Invitations was sent successfully
+    is_active: Active
+    lname: Last name
+    load_more_results: Load more results.
+    login: Login
+    logout: Logout
+    manager: Manager
+    manager_role: Manager
+    next: Next
+    no_record_found: No any record(s) found.
+    password: Password
+    password_updated_successfully: Password updated successfully.
+    profile: Profile
+    profile_updated_successfully: Profile updated successfully.
+    request_to_change_password: Someone has requested a link to change your password.
+      You can do this through the link below.
+    required_fields_flash: Please make sure all required fields are filled out and
+      save correctly
+    save: Save
+    signout: Logout
+    signup: Signup
+    something_went_wrong: Something went wrong
+    successfully_created: Successfully created.
+    successfully_deleted: Successfully deleted.
+    successfully_updated: Successfully updated.
+    unlock_my_account: Unlock my account
+    unlock_your_account: 'Click the link below to unlock your account:'
+    unsubscribe_from_this_list: Unsubscribe from this list
+    update: Update
+    update_subscription_preferences: Update subscription preferences
+    updating: Updating
+    welcome_email: Welcome %{email}!
+    search_name_or_city: Search by name or city
+    gender: Gender
+    date_of_birth: Date of birth (SSN)
+    more_options: More options
+    remove_user: Remove %{user}
+    send_login_info_email:
+      subject: "Your login information to %{brand}’s system."
+      text_area_message: "<b>Dear %{name}</b>, <br /><br /> Please find your login id and password to %{brand} system below. 
+                You can change your password in <b>My settings</b> page after you login into system. <br /><br />
+                <b>Login id:</b>  %{email}, <br /> <b>Password:</b>  ******** <br /><br />
+                User support phone number for %{brand} is %{phone_number}. You can call to user support from Monday to Friday
+                between 8:00 - 21:00 and on weekends between 9:00 - 17:00. <br /><br />
+                <b>Welcome to %{brand} team!</b>"
+    recipient: "Recipient"
+    add_recipient: "Add recipient"
+    subject: "Subject"
+    message: "Message"
+    general_yes: "Yes"
+    general_no: "No"               
+  login:
+    email: e-mail address
+    login_to_your_account: LOG IN TO YOUR ACCOUNT
+    password: password
+  site_title: DBM - DIGITAL BUSINESS MANAGER
+  toogle_header:
+    end_session: End <span> session </span>
+    start_screen: Start <span> screen </span>
+    user_register: User <span> register </span>
+  desktop:
+    executive_desktop: Executive's desktop
+    director_desktop: Director's desktop
+    dentist_desktop: Dentist's desktop
+    clinic_register: Clinic <span> register </span>
+    office_register: Office <span> register </span>
+    business_management: Business <span> management </span>
+    performance_reports: Performance <span> reports </span>
+    resource_and_variable: Resource & variable <span> management </span>
+    send_feedback_to_developers: Send feedback <span> to developers </span>
+    my_settings: My <span> settings </span>
+    end_session: End <span> session </span>
+    user_register: User <span> register </span>
+    send_bill: Send <span> bill </span>
+    bill_archive: Bill <span> archive </span>
+    background_variable: Background <span> variables </span>
+  executive_desktop:
+    dentist_register: Dentist <span> register </span>
+    director_register: Director <span> register </span>
+    executive_register: Executive <span> register </span>
+    user_register: User register
+    business_management: Business management
+  nav_header:
+    start: Start
+    executive_desktop: Executive desktop
+    user_register: User register
+    director_desktop: Director desktop
+    dentist_desktop: Dentist dektop
+    executives: Executives
+    directors: Directors
+    dentists: Dentists
+  executive:
+    register: Register
+    starting_date: Starting date
+    executive_card: Executive card - %{name}
+    register_executive: Registering new executive
+    name: Executive name
+    first_name: First name
+    last_name: Last name
+    dbm_email: DBM email
+    dbm_id: DBM id
+    personal_email: Personal email
+    job_role: Job role
+    office: Office
+    city: City
+    phone_number: Phone
+    email: E-mail
+    social_security_number: SSN
+    post_number: Post number
+    address: Address
+    date_of_birth: Date of birth
+    other_degrees: Other degrees
+    business_degrees: Insert degrees into this field
+    language_skills: Language skills
+    contractual_relationship: Contractual relationship
+    contract_starting_date: Starting day
+    contract_url: Contract
+    open_card: Open card
+    change_password: Change password
+    probation_yes: "yes"
+    probation_no: "no"
+    probation: Probation
+    until: Until
+    male: Male
+    female: Female
+    social_media_profile: Social media profile
+    other_businees_degree_example: Example DI, KTM
+    add_language: Add language
+    open_card: Open card
+    contract_length_and_type: Contract's length and type
+    contract: Contract
+    upload_written_contract: Upload written contract
+    upload_contract_attachment: Upload contract attachment
+    write_job_role: Write job role here..
+    introduction_text: Introduction text
+    add_introduction_text: Add introduction text
+    executive_updated: Executive was successfully updated.
+    executive_destroyed: Executive was successfully destroyed.
+    upload_photos: Upload photos
+    order_dbm_email:
+      subject: Request for new e-mail address, new %{brand} employee
+      text_area_message: "Greetings,<br /><br /> We are requesting new e-mail address for our new employee: <a href='javascript:void(0);'>%{request_email}</a>
+                <br /><br /> Please send confirmation e-mail to <a href='javascript:void(0);'>%{current_user_email}</a> when new e-mail is ready for use.
+                <br /><br /> Best regards,<br /><br /> %{current_user_name}"
+    performing_dentist_work: Performing dentist work
+    sv_number: SV-number
+    contractual_relationship: Contractual relationship
+    salary_based: Salary based
+    partner: Partner
+    add_job_role: Add job role
+    add_certificate: Add certificate
+    upload_certificate: Upload certificates
+    certificate: Certificate
+    reward_based_and_payment_rules: Reward base and payment rules
+    payment_information: Payment information
+    send_login_info_by_email: Send login id and password by email
+    sent_login_info: Login information has been sent by email.
+  director:
+    director_card: Director card - %{name}
+    register_director: Registering new clinics director
+    director_updated: Director was successfully updated.
+    director_destroyed: Director was successfully destroyed.
+  user:
+    address: Address
+    basic_information: "%{type} basic information"
+    card_name: "%{type} name"
+    user_card_name: "%{type} card - %{name}"
+    city: City
+    date_of_birth: Date of birth
+    email: E-mail
+    female: Female
+    first_name: First Name
+    last_name: Last Name
+    male: Male
+    my_settings:
+      address: Address
+      basic_information: Basic information
+      choose_language: Choose language
+      download_user_manual: Download DSD user manual
+      login_id: Login Id
+      login_id_and_password: Login Id and password
+      manage_setting: Manage settings
+      password: Password
+      social_media_profile: Social media profiles
+      working_areas: Working responsibilities
+    name: Name
+    personal_email: Personal e-mail
+    phone: Phone
+    phone_number: Phone
+    post_number: Post number
+    photo_upload:
+      header: "Photo is now uploaded"
+      header1: "Press the photo and drug angles to cut it."
+      info:
+        upload_photo: "UPLOADED PHOTO"
+        step1: "1. Choose area to include in the final photo."
+        step2: "2. Selected area will be stored as photo into profile."
+        step3: "3. Press <strong>Cut and set</strong> button below to save the photo to profile."
+      modal_btn:
+        reupload_photo: "Reupload photo"
+        remove_photo: "Remove photo"
+        cut_and_set: "Cut and set"
+    contract_end_date_validation: contract end date should be greater than contract start date    
+    job_role:
+      CEO: CEO
+      CFO: CFO
+      MARKETING_DIRECTOR: Marketing director
+      ADMINISTRATIVE_DIRECTOR: Administrative director
+      SALES_DIRECTOR: Sales director
+      CHIEF_OF_OPERATIONS: Chief of operations
+      RESPONSIBLE_MANAGER: Responsible manager
+      SERVICE_MANAGER: Service manager
+      LEADING_DENTIST: Leading dentist
+    confirm_info_and_finish_registration: Confirm %{type} information and finish registration
+  change_password:
+    change_my_password: Change password
+    change_your_password: Change your password
+    confirm_password: Confirm new password
+    current_password: Current password
+    new_password: New password
+  dbm_email: Dbm
+  feedback:
+    depending_on_message_contact: Depending on your message developers might contact
+      you also by phone.
+    found_bug: I found a bug!
+    have_development_idea: I have a development idea!
+    message_placeholder: Please describe a bug or development idea here and press
+      Send feedback button on the right side.
+    opinion_is_important: Your opinion is very important to us, thank you!
+    send_feedback_to_developers: Send feedback to developers
+    thank_you_for_feedback: Thank you for your message, it was successfully sent to
+      developers.
+    tip_1: Here you can send us information about the problem you discovered or suggest
+      a development idea - something you would like to see in upcoming software updates.
+    tip_2: You can also call to Fenux Oy user support by phone 020-000000. User support
+      is open on Monday-Friday 8:00-17:00.
+    tip_3: Remember to store user support phone number to your phone contacts.
+  recovery:
+    email: e-mail address
+    recover: RECOVER
+    recover_back: DON'T WORRY, WE GOTCH'ER BACK.
+    recover_password: RECOVER PASSWORD
+  form:
+    executive:
+      basic_information: Executive's basic information
+      form_step_1: "Step 1: Basic information"
+      form_step_2: "Step 2: Executive profile and introduction"
+      form_step_3: "Step 3: Summary"
+      form_step_1_without_number: Basic information
+      form_step_2_without_number: Executive profile and introduction
+      form_step_3_without_number: Summary     
+    director:
+      basic_information: Director's basic information
+      form_step_1: "Step 1: Basic information"
+      form_step_2: "Step 2: Director profile and introduction"
+      form_step_3: "Step 3: Summary"
+      form_step_1_without_number: Basic information
+      form_step_2_without_number: Director profile and introduction
+      form_step_3_without_number: Summary
+  form_action_button:
+    return_button: "Return Back"
+    close_and_return_button: "Close and return back"
+    save_button: "Save"
+    save_and_return_button: "Save and return back"
+    save_and_next_button: "Save and proceed to the NEXT STEP"
+    save_and_go_to_start_screen: "Save and go to Start screen"
+    save_changes_and_return_back: "Save changes and return back"
+    discard_changes_and_return_back: "Discard changes and return back"
+    edit_profile: "Edit profile"
+    other_options: "Other options"
+    finish_executive_registration: "Finish executive registration"
+    save_executive_registration: "Save executive"
+    finish_director_registration: "Finish director registration"
+    save_director_registration: "Save director"
+    save_registration: "Save"
+    edit_profile_and_introduction: "Edit profile"
+    edit_job_role_and_skills: "Edit job role and skills"
+    edit_skills: "Edit skills"
+    edit_position_and_contract: "Edit job role, position and contract"
+    discard_info_and_return: "Discard information and return back"
+    send_feedback: "Send feedback"
+    edit_basic_information: "Edit basic information"
+    edit_reward_base_and_payment_information: "Edit reward base and payment"
+    finish_registration: "Finish registration"
+    close: "Close"
+    go_to_start_screen: "Go to Start screen"
+    go_to_next_button: "Go to the NEXT STEP"
+    summary: "Summary"
+    proceed_to_next_step: "Proceed to next step"
+    send_login_info_by_email: "Send login info by email"
+    print_member_profile_pdf: "Print member profile PDF"
+  translation_tool:
+    translation: Translation tool
+    name: Translation <span> tool </span>
+    see_completed_translation: "See completed translations"
+    update_translations: "Update translations"
+    save_changes: "Save changes"
+    not_any_missing_translation: "There aren't any missing or updated phrases that need translation."
+    are_not_completed_translation: "There aren't any completed translations for this locale."
+    interpolation_key_not_match: "Interpolation keys don't match"
+    copy_original_translation: "Copy original translation"
+    phrases_missing_translation_count: "Phrases missing translation (%{count})"
+    phrases_missing_translation: "Phrases missing translation"
+    some_phrases_have_changed: "Some phrases have changed"
+    completed_translations: "Completed translations"
+    see_phrases_missing_translation: "See phrases missing translation"
+    no_search_results: "No search results."
+    return_back: Return back
+    t_phrase: "Phrase"
+    t_search: "Search"
+    t_within_key: "Within key"
+    t_apply_changes: "Apply changes"    

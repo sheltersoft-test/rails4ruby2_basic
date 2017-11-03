@@ -1,0 +1,76 @@
+$(document).ready(function(){
+
+  common_events();
+
+  $('.scroll').jscroll({
+    loadingHtml: '<img src="/loading.gif" alt="Loading" />',
+    autoTrigger: true,
+    nextSelector: 'a.jscroll-next:last',
+    callback: common_events
+  });
+});
+
+$('.fileUploadMedia').on( 'change', function(){
+  readURL(this);
+});
+
+function setScrollPosition(selectedId) {
+  $('html,body').animate({scrollTop: ($("#" + selectedId).offset().top - 2) }, 'slow');
+}
+
+function common_events(){
+
+  if ($("#pc_browser").val() != 'true') {
+    $('.virtualKeyboard, .virtualKeyboardRoom').attr('readonly', true);
+  }
+
+  $('.virtualKeyboardRoom').keyboard({
+    layout: 'custom',
+    restrictInput : true, // Prevent keys not in the displayed keyboard from being typed in
+    preventPaste : true,  // prevent ctrl-v and right click
+    autoAccept : true,
+    maxLength: 2,
+    keyBinding: 'mousedown touchstart',
+    position: {
+      of: null, // null = attach to input/textarea; use $(sel) to attach elsewhere
+      my: 'center top',
+      at: 'center top',
+      at2: 'center bottom', // used when "usePreview" is false
+      collision: 'flipfit flipfit'
+    } 
+  });
+
+  $('.virtualKeyboard').keyboard({
+    position: {
+      of: null,
+      my: 'top'
+    }
+  });
+  
+  $("#loader-image, .pre-icon").hide();
+  
+  $("#flash_msg").delay(3000).fadeOut(500);
+ 
+  $("#filter-btn, #saveMedia, #saveMediaNext").click(function(){
+    $("#loader-image").show();
+  });
+  
+  $(".pre-icon-load").click(function(){
+    $(".pre-icon").show();
+  });
+
+  $(".pre-load-form").submit(function(){    
+    $(".pre-icon").show();
+  });
+
+  $('.navbar-toggle').click(function(){
+    $(this).toggleClass('active');
+    $('.navbar-collapse').toggleClass('active');
+    $('.menuOverlay').toggleClass('active');
+  });
+  $('.menuOverlay').click(function(){
+    $(this).removeClass('active');
+    $('.navbar-collapse').toggleClass('active');
+    $('.navbar-toggle').toggleClass('active');
+  });
+}

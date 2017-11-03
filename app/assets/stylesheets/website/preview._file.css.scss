@@ -1,0 +1,52 @@
+canvas {
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.canvas{
+  width:33%;
+  list-style: none;
+}
+
+.remove-preview-file{
+  cursor: pointer;
+}
+
+ul#preview_files {
+  padding: 0;
+}
+ul#preview_files li{
+  padding: 0;
+  width: 16.6%;
+}
+ 
+ul#preview_files li{
+  display: inline-block;
+  min-height: 100px;
+}
+
+.pdf_canvas{
+  background: url(asset-path('to_pdf.png')) center center no-repeat #fff;
+}
+
+.image_canvas{
+  background: url(asset-path('image_canvas_preview.png')) center center no-repeat #fff;
+  height: 120px;
+  width: 118px;
+}
+
+.preview-photos img {
+  height: 120px;
+  width: 120px;  
+}
+
+.preview-photos a.remove {
+  padding: 5px;
+  position: absolute;  
+}
+#preview_files .remove-preview-file {
+  padding: 25px;
+  position: absolute;
+  top: -20px;
+  z-index: 99999;
+}

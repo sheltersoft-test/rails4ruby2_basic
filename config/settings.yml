@@ -1,0 +1,37 @@
+system:
+  domain: 'localhost:3000'
+  per_page_first: 11
+  per_page: 12
+locale:
+  languages:
+    - code: EN
+      display_name: 'English'
+    - code: FI
+      display_name: 'Suomalainen'
+  default:
+    country: 'FI'
+content:
+  resource:
+    media_path: ':rails_root/public/resources/:id_partition/:style/:id-:basename.:extension'
+    media_path_limited: ':rails_root/resources/:id_partition/:style/:id-:basename.:extension'
+    media_url_prefix: ''
+    media_url: '/resources/:id_partition/:style/:id-:basename.:extension'
+    media_url_limited: '/resources/:id/download'
+    media_default_url: 'noimage.gif'
+    brand_logo_path: ':rails_root/public/resources/brands/:id_partition/:style/:id-:basename.:extension'
+    brand_logo_url: '/resources/brands/:id_partition/:style/:id-:basename.:extension'
+    brand_logog_default_url: '/default/noimage.gif'    
+
+paperclip:
+  media_size_limit:
+    default: '5.megabytes'
+    image: '10.megabytes'
+    document: '20.megabytes'
+
+feedback:
+  recipient_emails:
+    - 'nitinvi.dev@gmail.com'
+    - 'bhargavpvi.dev@gmail.com'
+    - 'rahulvi.dev@gmail.com'
+  set_reminder_time: 7
+  set_response_time: 14  

@@ -1,0 +1,26 @@
+.row
+  .col-lg-12.mb20
+    .left
+      - prev = @user.prev
+      - if prev.present? 
+        = link_to image_tag("pre-arrow.png"), user_path(prev)
+    .right
+      - nxt = @user.next
+      - if nxt.present? 
+        = link_to image_tag("next-arrow.png"), user_path(nxt)
+.jumbotron
+  .listingDiv
+    .row    
+      .col-lg-12
+        .left
+          %p.text-info
+            = @user.full_name
+    .row
+      .col-lg-12
+        %table.table.table-striped.table-hover
+          %tr
+            %td
+              %h4= link_to t("user.number_of_stacks", count: @user.stacks.count), stacks_path(:user => @user.id)
+          %tr
+            %td
+              %h4= link_to t("user.number_of_products", count: @user.products.count), root_path(:user => @user.id)

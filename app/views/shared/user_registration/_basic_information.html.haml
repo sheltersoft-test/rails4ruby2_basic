@@ -1,0 +1,161 @@
+.row
+  .col-xs-12.col-sm-6
+    #first_name.form-group
+      - if object.new_record?
+        = f.hidden_field :password, :value => @secure_pass
+        = f.hidden_field :password_confirmation, :value => @secure_pass
+        = f.hidden_field :creator_id, :value => current_user.id
+      = f.text_field :first_name, :class => "form-control",:placeholder => t("executive.first_name")
+      - if object.errors[:first_name].any?
+        %span.text-error.text-message
+          = object.errors[:first_name].first
+    #last_name.form-group
+      = f.text_field :last_name, :class => "form-control", :placeholder => t("executive.last_name")
+      - if object.errors[:last_name].any?
+        %span.text-error.text-message
+          = object.errors[:last_name].first
+    #email.form-group
+      = hidden_field_tag 'step', '1'
+      = f.text_field :email, :class => "form-control", :placeholder => t("executive.dbm_email")
+      - if object.errors[:email].any?
+        %span.text-error.text-message
+          = object.errors[:email].first
+    #personal_email.form-group
+      = f.text_field :personal_email, :class => "form-control", :placeholder => t("executive.personal_email")
+  .col-xs-12.col-sm-6
+    #address.form-group
+      = f.text_field :address, :class => "form-control", :placeholder => t("executive.address")
+    #post_number.form-group
+      = f.text_field :post_number, :class => "virtualKeyboard form-control", :placeholder => t("executive.post_number")
+    #city.form-group
+      = f.text_field :city, :class => "form-control", :placeholder => t("executive.city")
+    #phone_number.form-group
+      = f.text_field :phone_number, :class => "form-control", :placeholder => t("executive.phone_number")
+  .col-xs-12
+    #birthdate.form-group.row
+      = f.label t("general.date_of_birth"), :class => "normal pt15 col-xs-12 col-md-3"
+      .col-xs-12.col-md-9
+        %span.selectBox.dib.verTop
+          = f.date_select :birthdate, :start_year => 1900, :end_year => Time.now.year, :class => "form-control", :order => [:day, :month, :year]
+          = " - "
+        #social_security_number.dib.verTop
+          = f.text_field :ssn, :class => "form-control", :size => "4", :placeholder => t("executive.social_security_number")                      
+  .col-xs-12
+    #gender.form-group.row
+      = f.label  t("general.gender"), :class => "normal col-xs-12 col-sm-2 col-lg-3"
+      .col-xs-12.col-sm-8.col-lg-9
+        %label.radioBox.radioInline
+          = f.radio_button :gender, 'M'
+          %span.lbl=t("executive.male")
+        %label.radioBox.radioInline
+          = f.radio_button :gender, 'F'
+          %span.lbl=t("executive.female")
+  .col-xs-12
+    .form-group.row
+      = f.label t('executive.performing_dentist_work'), :class => "normal col-xs-12 col-sm-2 col-lg-3"
+      .col-xs-12.col-md-9
+        %label.radioBox.radioInline
+          = f.radio_button :perform_dentist_work, true
+          %span.lbl= t("executive.probation_yes")
+        %label.radioBox.radioInline
+          = f.radio_button :perform_dentist_work, false
+          %span.lbl=t("executive.probation_no")
+        .dib.verTop
+          = f.text_field :sv_number, :class => "form-control", :placeholder => t("executive.sv_number")
+    .row
+      .col-xs-12.col-md-9.col-md-offset-3.pb5
+        %button.btn.btn-primary.btn-lg{"data-target" => "#DBMEmailModal", "data-toggle" => "modal", :type => "button", :id => 'dbmEmailbtn', :disabled => true }=t("executive.order_email")
+  .col-xs-12
+    .hr
+  .col-xs-12
+    .form-group.row
+      = f.label t('executive.contractual_relationship'), :class => "normal col-xs-12 col-sm-2 col-lg-4 formTitle"
+      .col-xs-12.col-sm-8.col-lg-8
+        %label.radioBox.radioInline
+          = f.radio_button :relationship_type, "SALARY_BASED"
+          %span.lbl=t("executive.salary_based")
+        %label.radioBox.radioInline
+          = f.radio_button :relationship_type, "PARTNER"
+          %span.lbl=t("executive.partner")
+  .col-xs-12
+    .form-group.formTitle
+      = t('executive.contract_length_and_type')
+  .col-xs-12.col-sm-4.col-lg-3.normal.pt15
+    .form-group
+      = f.label t('executive.starting_date')
+  .col-xs-12.col-sm-8.col-lg-9
+    .form-group
+      %span.selectBox
+        = f.date_select :contract_start_date, :start_year => 1950, :end_year => Time.now.year, :order => [:day, :month, :year]
+  %label.col-xs-12.col-sm-4.col-lg-3
+  .col-xs-12.col-sm-8.col-lg-9
+    .form-group
+      - User.valid_contract_types.each do |contract_type|
+        %label.radioBox.radioInline{:id => "#{contract_type.downcase}_0", :class => "contract_type_#{contract_type.downcase}"}
+          = f.radio_button :contract_type, contract_type, :id => "contract_type_#{contract_type.downcase}_0"
+          %span.lbl= contract_type.humanize
+  .col-xs-12.col-sm-4.col-lg-3.normal
+    .form-group
+      = f.label t('executive.probation')
+  .col-xs-12.col-sm-8.col-lg-9
+    .form-group
+      %label.radioBox.radioInline{:id => "probation_lbl_true_0", :class => "contract_probation_true"}
+        = f.radio_button :contract_probation, true, :id => "contract_probation_true_0"
+        %span.lbl=t("executive.probation_yes")
+      %label.radioBox.radioInline{:id => "probation_lbl_false_0", :class => "contract_probation_false"}
+        = f.radio_button :contract_probation, false, :id => "contract_probation_false_0"
+        %span.lbl=t("executive.probation_no")
+  #contract_until_0.contract_until.none
+    .col-xs-12.col-sm-4.col-lg-3.normal.pt15
+      .form-group
+        = f.label t('executive.until')
+    .col-xs-12.col-sm-8.col-lg-9
+      .form-group
+        %span.selectBox
+          = f.date_select :contract_end_date, :start_year => 1950, :end_year => Time.now.year + 80, :class => "form-control", :order => [:day, :month, :year]
+          - if object.errors[:contract_end_date].any?
+            %span.text-error.text-message
+              = object.errors[:contract_end_date].first
+  .col-xs-12
+    .hr                            
+  .col-xs-12
+    .form-group.formTitle
+      = t('executive.contract')
+  .col-xs-12.col-md-7.col-lg-7
+    .form-group
+      - written_contract = object.resources["DOCUMENT::WRITTEN_CONTRACT"]
+      = f.fields_for :resources, (written_contract || Resource.new) do |ff|
+        #upload_media.uploadFile.form-control
+          %i.fa.fa-picture-o
+          =t("executive.upload_written_contract")
+          .btn.btn-primary.btn-lg
+            = t("general.upload")
+          = ff.file_field :media, :class => "file-control form-control UploadedMedia"
+          = ff.hidden_field :resource_type_id, value: ResourceType.find_by(name: "DOCUMENT").id
+          = ff.hidden_field :resource_spec_id, value: ResourceSpec.find_by(name: "WRITTEN_CONTRACT").id
+        %div.upload-file-box
+          %ul.preview_attachments
+            - if written_contract.present?
+              %li
+                = link_to written_contract.media_file_name, (written_contract.media.url)
+            - else  
+              %li  
+  .col-xs-12.col-md-7.col-lg-7
+    .form-group
+      - contract_attachment = object.resources["DOCUMENT::CONTRACT_ATTACHMENT"]
+      = f.fields_for :resources, (contract_attachment || Resource.new) do |ff|
+        #upload_media.uploadFile.form-control
+          %i.fa.fa-picture-o
+          =t("executive.upload_contract_attachment")
+          .btn.btn-primary.btn-lg
+            = t("general.upload")
+          = ff.file_field :media, :class => "file-control form-control UploadedMedia"
+          = ff.hidden_field :resource_type_id, value: ResourceType.find_by(name: "DOCUMENT").id
+          = ff.hidden_field :resource_spec_id, value: ResourceSpec.find_by(name: "CONTRACT_ATTACHMENT").id
+        %div.upload-file-box
+          %ul.preview_attachments
+            - if contract_attachment.present?
+              %li
+                = link_to contract_attachment.media_file_name, (contract_attachment.media.url)
+            - else
+              %li

@@ -1,0 +1,38 @@
+= form_for(@executive, :url => executive_path(@executive), :method => "PUT") do |f|
+  - language_skills = @current_brand.language_skills
+  - job_roles = @executive.user_job_roles
+  - user_role = @executive.user_role.role
+  - other_languages = @executive.languages.to_s.split(",") if @executive.languages.present?
+  - other_job_role = @executive.other_job_role if @executive.other_job_role.present?  
+  = hidden_field_tag 'step', @step
+  = hidden_field_tag 'open_card', params[:open_card]
+  
+  %table.tableForm{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+    %tbody
+      %tr
+        %td#stepBtnHeight.leftCol{:width => "80%"}
+          .formBox.view-details
+            .formHeader.clearfix
+              %h1
+                - if !@executive.registered?
+                  = t("executive.register_executive")
+                  %span= t("form.executive.form_step_2")
+                -else
+                  = @executive.name
+                  %span= t("form.executive.form_step_2_without_number")
+            = render :partial => "shared/user_registration/profile_and_introduction", :locals => {:object => @executive, :user => "executive's", :user_type => 'executive', :job_roles => job_roles, :user_role => user_role, :other_languages => other_languages, :other_job_role => other_job_role, :language_skills => language_skills, f: f}
+        %td.stepBtnGroup{:width => "20%"}
+          - back_btn_href = params[:open_card] == "true" ? executive_path(@executive.id) : edit_executive_path(@executive, :step => (@step.to_i - 1))
+          %a.h25.stepBtn.backBtn{:href => back_btn_href, :class => btn_height_class }
+            %span
+              =t("form_action_button.return_button")
+            = image_tag "back_btn.png", :class => "mt15"
+          %button.stepBtn.nextBtn{:name => "save", :type => "submit", :class => btn_height_class}
+            %span
+              =t("form_action_button.save_button")
+            = image_tag "save_btn.png", :class => "mt15"
+          - unless params[:open_card] == "true"
+            %button.h50.stepBtn.nextBtn{:name => "proceed_next", :type => "submit"}
+              %span
+                = t("form_action_button.save_and_next_button")
+              = image_tag "save_and_next_btn.png", :class => "mt15"

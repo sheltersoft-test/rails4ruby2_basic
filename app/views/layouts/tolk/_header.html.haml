@@ -1,0 +1,32 @@
+%nav.navbar.navbar-default
+  .container
+    .navbar-header
+      - if current_user
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = render "layouts/nav_header"
+        .navbar-collapse
+          .menuBox
+            .row
+              .col-xs-12.col-sm-4.col-md-3
+                %a.toolBox{:href => "/desktop"}
+                  .toolImage
+                    = image_tag "start_screen.png"
+                  .toolTitle
+                    = t("toogle_header.start_screen").html_safe
+              .col-xs-12.col-sm-4.col-md-3
+                %a.toolBox{"data-method" => "delete", :href => "/users/sign_out"}
+                  .toolImage
+                    = image_tag "dbm_end_session.png"
+                  .toolTitle
+                    = t("toogle_header.end_session").html_safe
+          .menuOverlay
+        - unless @desktop.present?
+          .navbar-logo
+            = image_tag  "straumann-digital-logo.png"
+      - else
+        .navbar-logo
+          = image_tag  "straumann-digital-logo.png"

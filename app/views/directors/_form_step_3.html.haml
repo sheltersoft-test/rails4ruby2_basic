@@ -1,0 +1,36 @@
+= form_for(@director, :url => director_path(@director), :method => "PUT") do |f|
+  = hidden_field_tag 'step', @step
+  = hidden_field_tag 'type', "User"
+  %table.tableForm{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+    %tbody
+      %tr
+        %td#stepBtnHeight.leftCol{:width => "80%"}
+          .formBox.view-details
+            .formHeader.clearfix
+              %h1
+                - if !@director.registered?
+                  = t("director.register_director")
+                  %span= t("form.director.form_step_3")
+                -else
+                  = @director.name
+                  %span= t("form.director.form_step_3_without_number")
+            = render :partial => "shared/summary_open_card", :locals => {:object => @director, :open_card => false}
+        %td.stepBtnGroup{:width => "20%"}
+          - back_btn_href = params[:open_card] == "true" ? executive_path(@director.id) : edit_executive_path(@director, :step => (@step.to_i - 1))
+          %a.h35.stepBtn.backBtn{:href => back_btn_href, :class => btn_height_class}
+            %span
+              =t("form_action_button.return_button")
+            = image_tag "back_btn.png", :class => "mt15"
+          = link_to send_pdf_path(@director.id, format: 'pdf'), class: "h25 stepBtn nextBtn btn_height_class" do
+            %span
+              = t("form_action_button.print_member_profile_pdf")
+            = image_tag "print_profile.png", :class => "mt15"            
+          %button.h25.stepBtn.nextBtn{"data-target" => "#LoginInfoEmailModal", "data-toggle" => "modal", :type => "button"}
+            %span
+              =t("form_action_button.send_login_info_by_email")
+            = image_tag "email_btn.png", :class => "mt15"            
+          - unless params[:open_card] == "true"
+            %button.h25.stepBtn.nextBtn{:name => "proceed_next", :type => "submit"}
+              %span
+                = @director.registered? ? t("form_action_button.save_executive_registration") : t("form_action_button.finish_executive_registration")
+              = image_tag "save_and_next_btn.png", :class => "mt15"

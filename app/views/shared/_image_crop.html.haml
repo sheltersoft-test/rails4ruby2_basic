@@ -1,0 +1,45 @@
+%input#imgX1{:name => "imgX1", :type => "hidden"}/
+%input#imgY1{:name => "imgY1", :type => "hidden"}/
+%input#imgWidth{:name => "imgWidth", :type => "hidden"}/
+%input#imgHeight{:name => "imgHeight", :type => "hidden"}/
+%input#imgCropped{:name => "imgCropped", :type => "hidden"}/
+#user-image-crop.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %label.subTitle
+          = t("user.photo_upload.info.upload_photo")
+      .modal-body
+        .row
+          .col-xs-12.col-sm-5.center
+            .form-group
+              %img#user-photo
+          .col-xs-12.col-sm-7
+            .row
+              .col-xs-12.form-group
+                %label.subTitleBlue
+                  = t("user.photo_upload.header")
+              .col-xs-12.form-group
+                %label
+                  = t("user.photo_upload.header1")
+              .col-xs-12.form-group
+                %label
+                  = t("user.photo_upload.info.step1")
+              .col-xs-12.form-group
+                %label
+                  = t("user.photo_upload.info.step2")
+              .col-xs-12.form-group
+                %label
+                  = t("user.photo_upload.info.step3").html_safe
+              .col-xs-12.form-group
+                %button{:type => "button", :id => 'reupload_photo', :class => "btn btn-blue btn-lg mt10"}
+                  %span
+                    = t("user.photo_upload.modal_btn.reupload_photo")
+                %button{:type => "button", :id => 'remove_photo', :class => "btn btn-blue btn-lg mt10"}
+                  %span
+                    = t("user.photo_upload.modal_btn.remove_photo")
+                %button{:type => "button", :id => 'btnCrop', :class => "btn btn-blue btn-lg mt10"}
+                  %span
+                    = t("user.photo_upload.modal_btn.cut_and_set")

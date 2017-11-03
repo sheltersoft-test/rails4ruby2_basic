@@ -1,0 +1,18 @@
+.container
+  #set_flash_message
+  .formField
+    .row
+      #registration-form.col-xs-12
+        = render "form_step_#{@step.to_s}"
+  - if @step.to_i == 1
+    #DBMEmailModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog.modal-lg{:role => "document"}
+        .modal-content
+          .modal-body            
+            = render :partial => "emails/form_email", :locals => {:object => @executive}
+  - if @step.to_i == 3
+    #LoginInfoEmailModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog.modal-lg{:role => "document"}
+        .modal-content
+          .modal-body
+          = render :partial => "emails/form_login_info_email", :locals => {:object => @executive}            
